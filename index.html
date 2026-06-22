@@ -23,6 +23,93 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+
+
+
+
+.infrastructure {
+    text-align: center;
+    padding: 50px 20px;
+    font-family: sans-serif;
+}
+
+.infrastructure h2 {
+    color: #0b1354;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 45px;
+    text-transform: uppercase;
+}
+
+.logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4.5rem; 
+    flex-wrap: wrap; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+}
+
+.logo-row a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.logo-row img {
+    max-width: 100%; 
+    height: auto;
+    max-height: 100px; 
+    object-fit: contain;
+    
+    /* Base State */
+    opacity: 0.8; /* Dimmed slightly so the highlight is obvious */
+    filter: grayscale(20%); /* Adds a subtle muted look initially */
+    
+    /* Smooth transition for the "pop-up" and "highlight" physics */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                opacity 0.3s ease, 
+                filter 0.3s ease,
+                filter 0.3s ease; 
+    cursor: pointer; 
+}
+
+/* --- THE INTERACTIVE REQUIREMENTS --- */
+.logo-row a:hover img {
+    /* 1. Visually Highlighted: Restores full color and full brightness */
+    opacity: 1;               
+    filter: grayscale(0%) drop-shadow(0px 10px 12px rgba(0, 0, 0, 0.12)); 
+
+    /* 2 & 3. Enlarges Slightly + Subtle Pop-Up Animation:
+       scale(1.08) grows it by 8%, translateY(-8px) physically lifts it up */
+    transform: scale(1.08) translateY(-8px); 
+}
+
+@media (max-width: 768px) {
+    .logo-row {
+        gap: 3rem; 
+    }
+}
+
+@media (max-width: 600px) {
+    .infrastructure h2 {
+        font-size: 1.2rem;
+    }
+    .logo-row {
+        gap: 2rem; 
+    }
+    .logo-row img {
+        max-height: 65px; 
+    }
+    /* Less extreme movement on small mobile touch devices */
+    .logo-row a:hover img {
+        transform: scale(1.05) translateY(-4px);
+    }
+}
+
+
+        
+
         body {
             background-color: #ffffff;
             color: var(--text-dark);
@@ -82,74 +169,96 @@
 
         /* --- Hero Section --- */
         .hero-section {
-            max-width: 900px;
-            margin: 50px auto 20px auto;
-            text-align: center;
-            padding: 0 20px;
-        }
+    /* Constraining the width to ~650px matches the exact text wrapping from image_13dd3a.png */
+    max-width: 650px; 
+    margin: 60px auto 40px auto;
+    text-align: center;
+    padding: 0 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
-        .partner-link {
-            color: var(--accent-blue);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
+.hero-section h1 {
+    /* Exact dark navy color from the image */
+    color: #0b1354; 
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
 
-        .hero-section h1 {
-            color: var(--primary-blue);
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
-        }
+.hero-section p {
+    /* Crisp dark tone for maximum readability */
+    color: #111111; 
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+}
 
-        .hero-section p {
-            color: var(--text-muted);
-            font-size: 16px;
-            line-height: 1.7;
-        }
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+    .hero-section h1 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    .hero-section p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+}
 
         /* --- Applications Section Header --- */
-        .apps-header {
-            text-align: center;
-            max-width: 800px;
-            margin: 60px auto 30px auto;
-            padding: 0 20px;
-        }
+       .apps-header {
+    text-align: center;
+    /* max-width: 650px; gives the paragraph text that exact compact 2-line structure from image_13e805.png */
+    max-width: 650px; 
+    margin: 60px auto 35px auto;
+    padding: 0 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
-        .apps-header h2 {
-            color: var(--primary-blue);
-            font-size: 22px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
+.apps-header h2 {
+    /* Matching the exact dark navy tone from the project identity */
+    color: #0b1354; 
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
 
-        .apps-header p {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
+.apps-header p {
+    /* True dark tone and size matching the image snippet */
+    color: #111111; 
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 400;
+    margin: 0;
+}
 
-        /* --- Interactive Cards Grid --- */
-        .apps-grid {
-            max-width: 1100px;
-            margin: 0 auto 50px auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            padding: 0 20px;
-        }
+/* --- Interactive Cards Grid (Kept clean and ready for your grid items) --- */
+.apps-grid {
+    max-width: 1100px;
+    margin: 0 auto 50px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 0 20px;
+}
 
-        @media (max-width: 900px) {
-            .apps-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .apps-grid { grid-template-columns: 1fr; }
-        }
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .apps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .apps-header h2 {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+    .apps-grid { grid-template-columns: 1fr; }
+}
 
         /* Card Styling exactly matching image layout */
         .app-card {
@@ -438,7 +547,7 @@
 
     <main>
         <section class="hero-section">
-            <a href="#" class="partner-link">Partner With US</a>
+            <a href="#" class="partner-link"></a>
             <h1>NALEKO AI PLATFORM</h1>
             <p>The Naleko AI-HCM Stack is an integrated, intelligent system designed to power the entire talent lifecycle from recruitment to retirement. Built on a bedrock of unified talent data and real-time analytics, the platform seamlessly connects core human capital management with advanced agentic AI to manage, deploy, and measure organizational talent automatically.</p>
         </section>
@@ -448,7 +557,7 @@
             <p>Each application is trained on real Naleko programme data and deployed inside our HCM platform. Click any application to request a specialized live demo.</p>
         </section>
 
-        <section class="apps-grid">
+         <section class="apps-grid">
             
             <div class="app-card" onclick="openDemoModal('Agentforce Screening')">
                 <div class="card-icon">
@@ -526,7 +635,9 @@
 
             
         </section>
-        <div style="display: flex; justify-content: center; width: 100%;">
+
+
+<div style="display: flex; justify-content: center; width: 100%;">
   <a href="#" class="btn-header-demo" onclick="openDemoModal('General Platform')" style="
     background-color: #0d124b; /* Exact deep blue from image_0.png */
     color: #ffffff; /* White text */
@@ -540,34 +651,44 @@
   ">Request Application Demo</a>
 </div>
 
-        <section class="infrastructure">
-          
-            <h4>BUILT ON ENTERPRISE-GRADE INFRASTRUCTURE</h4>
-            <div class="logo-row">
-                <div class="infra-logo">salesforce</div>
-                <div class="infra-logo" style="font-style: italic; font-weight: 800;">aws</div>
-            </div>
-        </section>
+       <section class="infrastructure">
+    <h2>BUILT ON ENTERPRISE-GRADE INFRASTRUCTURE</h2>
+    <div class="logo-row">
+        <a href="https://www.salesforce.com" target="_blank" rel="noopener noreferrer">
+            <img src="sales.png" alt="Salesforce logo">
+        </a>
+       <a href="https://aws.amazon.com" target="_blank" rel="noopener noreferrer">
+            <img src="aws.png" alt="Amazon Web Services logo">
+        </a>
+        <a href="https://moodle.org" target="_blank" rel="noopener noreferrer">
+            <img src="m.png" alt="Moodle logo">
+        </a>
+      <a href="https://powerbi.microsoft.com" target="_blank" rel="noopener noreferrer">
+            <img src="dash.png" alt="Microsoft Power BI logo">
+        </a>
+    </div>
+</section>
     </main>
+    <!-- Interactive Request Demo Modal (Hidden by Default) -->
 
     <div class="modal-backdrop" id="demoModal" onclick="closeDemoModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="document.getElementById('demoModal').style.display='none'">&times;</button>
             <h3 id="modalTitle">Request Application Demo</h3>
             
-            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DgL000006A5B3" method="POST">
+            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D07000000ZYWX" method="POST"onsubmit="return validateBusinessEmail(event)">
                 
-                <input type="hidden" name="oid" value="00DgL000006A5B3">
+                <input type="hidden" name="oid" value="00D07000000ZYWX">
                 <input type="hidden" name="retURL" value="https://wiseman-2312.github.io/thankyoupagenaleko">
                 <input type="hidden" name="lead_source" value="Web">
 
-                <!--<input type="hidden" name="debug" value=1>                              
+                <input type="hidden" name="debug" value=1>                              
                 <input type="hidden" name="debugEmail"                                  
-                         value="wisemanwork060@gmail.com"> -->
+                         value="wisemanwork060@gmail.com"> 
 
                 <div class="form-group">
-                    <label for="modalAppInput">Selected Demo Type</label>
-                    <input type="text" id="modalAppInput" name="00NgL000042lQjp" readonly style="background:#f0f4f8; font-weight:bold; color:var(--accent-blue)">
+                    <label for="modalAppInput">Selected Application</label>
+                    <input type="text" id="modalAppInput" name="00NTt00000IiwIr" readonly style="background:#f0f4f8; font-weight:bold; color:var(--accent-blue)">
                 </div>
                 
                 <div class="form-group">
@@ -581,13 +702,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Work Email</label>
-                    <input type="email" id="email" name="email" maxlength="80" required placeholder="name@company.com">
+                  <!-- <label for="email">Work Email</label>
+                    <input type="email" id="email" name="email" maxlength="80" required placeholder="name@company.com">-->
+
+                  <!-- <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>-->
+                <label for="email">Email</label>
+    <input id="email" maxlength="80" name="email" size="20" type="text" required style="padding: 5px; margin-bottom: 5px;"placeholder="name@company.com" />
+    
+
+    <span id="email-error" style="color: red; display: none; font-size: 14px; font-weight: bold; margin-bottom: 10px;">
+        Please enter a valid company email address (personal emails like Gmail are not allowed).
+    </span>
+    
                 </div>
 
                 <div class="form-group">
-                    <label for="mobile">Mobile</label>
-                    <input type="tel" id="mobile" name="mobile" maxlength="40" placeholder="e.g. +27 11 123 4567">
+ 
+                    <label for="phone">Phone</label>
+                    <input  id="phone" maxlength="40" name="phone" size="20" type="text" placeholder="e.g. +27 11 123 4567"/>
                 </div>
 
                 <div class="form-group">
@@ -596,26 +728,71 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="00NgL000042lQn3">Job Title</label>
-                    <input type="text" id="00NgL000042lQn3" name="00NgL000042lQn3" maxlength="250" placeholder="Your job title">
+                    <label for="00NTt00000IiwM5">Job Title</label>
+                    <input type="text" id="00NTt00000IiwM5" name="00NTt00000IiwM5" maxlength="250" placeholder="Your job title">
                 </div>
 
                 <div class="form-group">
-                    <label for="00NgL000042lC7P">Preferred Date & Time (Time available)</label>
-                    <input type="datetime-local" id="00NgL000042lC7P" name="00NgL000042lC7P" required>
+                    <label for="00NTt00000IiwNh">Preferred Date & Time (Time available)</label>
+                    <input type="datetime-local" id="00NTt00000IiwNh" name="00NTt00000IiwNh" required>
                 </div>
 
                 <div class="form-group full-width">
-                    <label for="description">How can we help you?</label>
-                    <textarea id="description" name="description" rows="4" placeholder="Optional comments or requests..."></textarea>
+                   <!-- <label for="description">How can we help you?</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Optional comments or requests..."></textarea>-->
+                     <label for="00NTt00000IiwKTMAZ">How can we help you?</label>
+            <textarea id="00NTt00000IiwKTMAZ" name="00NTt00000IiwKTMAZ" wrap="soft"></textarea>
                 </div>
 
-                <button type="submit" name="submit" class="submit-btn">Book My Demo</button>
+                <button type="submit" name="submit" class="submit-btn">Request Live Demo Connection</button>
             </form>
+            <script>
+function validateBusinessEmail(event) {
+    const emailInput = document.getElementById('email').value.trim().toLowerCase();
+    const errorSpan = document.getElementById('email-error');
+    const emailField = document.getElementById('email');
+    
+    // List of common public/free email domains to block
+    const forbiddenDomains = [
+        'gmail.com', 
+        'yahoo.com', 
+        'hotmail.com', 
+        'outlook.com', 
+        'aol.com', 
+        'icloud.com', 
+        'zoho.com', 
+        'protonmail.com',
+        'yandex.com',
+        'mail.com',
+        'live.com',
+        'msn.com'
+    ];
+
+    // Extract the domain from the email address (e.g., "gmail.com")
+    const emailDomain = emailInput.split('@')[1];
+
+    // Check if the domain is in our blocklist
+    if (forbiddenDomains.includes(emailDomain)) {
+        // Stop the form from submitting to Salesforce
+        event.preventDefault(); 
+        
+        // Show the error message and give the input a red border
+        errorSpan.style.display = 'block';
+        emailField.style.borderColor = 'red';
+        emailField.focus(); // Places the user's cursor back in the box
+        return false;
+    }
+
+    // If it's a corporate email, reset styles and allow submission
+    errorSpan.style.display = 'none';
+    emailField.style.borderColor = '';
+    return true;
+}
+</script>
          
         </div>
     </div>
-        
+
     <footer>
         <div class="footer-container">
             <div class="footer-col">
